@@ -1,0 +1,17 @@
+version: "3.7"
+
+networks:
+  default:
+    external:
+      name:
+        pids
+
+services:
+  api:
+    container_name:  pids_service_api
+    build: .
+    env_file: .env.container
+    ports:
+      - 8000:8000
+    volumes:
+      - ./public:/home/restify/pids/public

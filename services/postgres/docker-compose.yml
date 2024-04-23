@@ -1,0 +1,24 @@
+version: '3.3'
+
+networks:
+  default:
+    external:
+      name:
+        pids
+        
+services:
+  db:
+    image: postgis/postgis:13-master
+    container_name: pids_postgres
+    restart: always
+    environment:
+      POSTGRES_DB: 'pids_db'
+      POSTGRES_USER: 'pids-user'
+      POSTGRES_PASSWORD: '6c2cd85c-f822-4afe-8005-02b5c73e4b52'
+      POSTGRES_ROOT_PASSWORD: '820f2543-ad17-4fbe-b1b7-9f4c04b6731c'
+    volumes:
+      - ./postgres-data:/var/lib/postgres
+    ports:
+      - '5433:5432'
+    expose:
+      - '5433'
